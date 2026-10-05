@@ -1,7 +1,9 @@
-from  fastapi import FastAPI
-from  fastapi.responses import HTMLResponse
+from  fastapi import FastAPI, Request
+from fastapi.templating import  Jinja2Templates
 
 app = FastAPI()
+
+templates = Jinja2Templates(directory="templates")
 
 posts: list[dict] = [
     {
@@ -20,9 +22,9 @@ posts: list[dict] = [
     },
 ]
 
-@app.get("/", response_class=HTMLResponse)
-def home():
-    return f"<h1>{posts[0]['author']}</h1>"
+@app.get("/")
+def home(request: Request ):
+    return templates.TemplateResponse(request,"home.html")
 
 @app.get("/api/posts")
 def get_posts():
