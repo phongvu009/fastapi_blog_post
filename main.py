@@ -24,7 +24,7 @@ posts: list[dict] = [
 
 @app.get("/")
 def home(request: Request ):
-    return templates.TemplateResponse(request,"home.html")
+    return templates.TemplateResponse(request,"home.html", {"posts": posts, "title" : "Home Page"})
 
 @app.get("/api/posts")
 def get_posts():

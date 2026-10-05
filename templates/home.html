@@ -2,12 +2,19 @@
 <html>
     <head>
         <title>
-            FastAPI Simple Project
+            {% if  title %}
+                {{ title }}
+            {% else %}
+                FastAPI Simple Project
+            {% endif %}
         </title>
 
     </head>
     <body>
         <h1>FastAPI Simple Projext</h1>
-        <p>this is a paragraph</p>
+        {% for post in posts %} 
+            <h2>{{post.title}}</h2>
+            <p>{{post.content}}</p>
+        {% endfor%}
     </body>
 </html>
