@@ -71,6 +71,7 @@ def create_post( post: PostCreate):
     new_id = max( p["id"] for p in posts) + 1 if posts else 1
     new_post = {
         "id": new_id,
+        "title": post.title,
         "author": post.author,
         "content": post.content,
         "date_posted": "April 23, 2025"
